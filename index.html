@@ -2,19 +2,19 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>F# R Provider
+    <title>F# R Type Provider
 </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The F# Data library implements type providers for working with structured file formats (CSV, JSON and XML) and for accessing the WorldBank and Freebase data. It also includes helpers for other data-related tasks.">
-    <meta name="author" content="Tomas Petricek">
+    <meta name="description" content="An F# Type Provider providing strongly typed access to the R statistical package.">
+    <meta name="author" content="BlueMountain Capital">
 
     <script src="http://code.jquery.com/jquery-1.8.0.js"></script>
     <script src="http://code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
     <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
     <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet">
 
-    <link type="text/css" rel="stylesheet" href="http://tpetricek.github.io/FSharp.RProvider//content/style.css" />
-    <script src="http://tpetricek.github.io/FSharp.RProvider//content/tips.js" type="text/javascript"></script>
+    <link type="text/css" rel="stylesheet" href="http://bluemountaincapital.github.io/FSharpRProvider/content/style.css" />
+    <script src="http://bluemountaincapital.github.io/FSharpRProvider/content/tips.js" type="text/javascript"></script>
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -24,49 +24,59 @@
     <div class="container">
       <div class="masthead">
         <ul class="nav nav-pills pull-right">
-          <li><a href="http://fsharp.org">fsharp.org</a></li>
           <li><a href="https://github.com/BlueMountainCapital/FSharpRProvider">github page</a></li>
+          <li><a href="http://fsharp.github.io/FSharp.Charting/">F# Charting</a></li>
+          <li><a href="http://fsharp.github.io/FSharp.Data/">F# Data</a></li>
+          <li><a href="http://fsharp.org">fsharp.org</a></li>
         </ul>
         <h3 class="muted">R Type Provider</h3>
       </div>
       <hr />
       <div class="row">
         <div class="span9" id="main">
-          <img src="https://www.bluemountaincapital.com/media/logo.gif" style="float:right" />
+          <h1>F# R Type Provider</h1>
 
-<h1>F# R Provider</h1>
+<img src="http://www.bluemountaincapital.com/media/logo.gif" style="float:right;margin:10px;margin-top:0px;" />
 
-<p>An F# type provider for interoperating with <a href="http://www.r-project.org/">R</a>.</p>
+<p>The F# Type Provider is a mechanism that enables smooth interoperability
+between F# and <a href="http://www.r-project.org/">R</a>. 
+The Type Provider discovers R packages that are available 
+in your R installation and makes them available as .NET namespaces 
+underneath the parent namespace <code>RProvider</code>.</p>
 
-<h3>What does it do?</h3>
+<p>The Type Provider makes it possible to use 
+all of R capabilities, from the F# interactive environment. 
+It enables on-the-fly charting and data analysis using R packages, 
+with the added benefit of IntelliSense over R, 
+and compile-time type-checking that the R functions you are using exist. 
+It allows you to leverage all of .NET libraries,
+as well as F# unique capabilities to access and manipulate data 
+from a wide variety of sources via Type Providers.</p>
 
-<p>The R Provider discovers R packages that are available in your R installation and makes them
-available as .NET namespaces underneath the parent namespace <code>RProvider</code>.  For example, the
-stats package is available as <code>RProvider.stats</code>.  If you open the namespaces you want to use,
-functions and values will be available as R.name.  For example, consider this F# interactive script:</p>
+<h3>A Quick Demo</h3>
 
-<table class="pre"><tr><td class="lines"><pre class="fssnip">
-<span class="l">1: </span>
-<span class="l">2: </span>
-<span class="l">3: </span>
-<span class="l">4: </span>
-</pre>
-</td>
-<td class="snippet"><pre class="fssnip">
-<span class="k">open</span> <span class="i">RProvider</span>
-<span class="k">open</span> <span class="i">RProvider</span><span class="o">.</span><span class="i">``base``</span>
+<div style="text-align:center;">
+<iframe style="margin-left:auto;margin-right:auto;" width="420" height="315" src="http://www.youtube.com/embed/_BOST3W88-Y" frameborder="0" allowfullscreen></iframe>
+</div>
 
-<span class="k">let</span> <span onmouseout="hideTip(event, 'fs1', 1)" onmouseover="showTip(event, 'fs1', 1)" class="i">v</span> <span class="o">=</span> <span class="i">R</span><span class="o">.</span><span class="i">c</span>(<span class="n">1</span>,<span class="n">2</span>,<span class="n">3</span>)</pre>
-</td>
-</tr>
-</table>
+<h2>What are R and F#?</h2>
 
-<p>This creates an R numeric vector containing 1,2,3, and names it <code>v</code>.  Note that we had to
-open the <code>base</code> namespace, since the function <code>c</code> is part of that namespace.  You should also
-open namespace <code>RProvider</code>, because it contains some helper functions.</p>
+<p><a href="http://msdn.microsoft.com/en-us/vstudio/hh388569">F#</a> is a mixed-paradigm language 
+that supports functional, object-oriented and imperative programming, 
+with the emphasis on functional. F# runs on the .NET runtime and is a compiled, 
+statically typed language with a strong type system and type inference. 
+F# is a general purpose programming language, 
+and is particularly well-suited for scientific/numerical computing.</p>
 
-<p>And because type providers are used by the Visual Studio IDE, you will get intellisense for R
-functions.  You will also get compile-time type-checking that the function exists.</p>
+<p><a href="http://www.r-project.org/">R</a> is an Open Source language for statistical computing. 
+R offers a wide range of high-quality, community-developed packages, 
+covering virtually every area of statistics, econometrics or machine learning. 
+It is also famous for its charting capabilities, making it a great tool 
+to produce publication-quality graphics. 
+R is an interpreted, dynamically typed language that is typically used 
+from its GUI, <a href="http://www.rstudio.com/">RStudio</a>, or command line interactive environment.</p>
+
+<h2>Using the R Type Provider</h2>
 
 <div class="row">
   <div class="span1"></div>
@@ -80,62 +90,59 @@ functions.  You will also get compile-time type-checking that the function exist
   <div class="span1"></div>
 </div>
 
-<h2>How to use it</h2>
-
-<ul>
-<li><p>There is a lot of info on how to use the provider on our 
-<a href="howto.html">how to page</a>.</p></li>
-<li><p>The <a href="tutorial.html">tutorial page</a> demonstrates how to use the R provider to 
-analyze financial data using R libraries from F#.</p></li>
-<li><p>For information on what the RProvider is and why you might want 
-to use it, take a look at the <a href="whatwhy.html">Whats and Whys page</a>.</p></li>
-<li><p>For some details of how the RProvider works, check out <a href="internals.html">How does it work?</a>.</p></li>
-</ul>
-
 <h3>Pre-requisites</h3>
 
-<p>The R Provider requires an installation of R for Windows, downloadable from 
-<a href="http://cran.cnr.berkeley.edu/bin/windows/base/">here</a>.  RProvider uses the R registry key 
-<code>SOFTWARE\R-core</code> to locate the R binary directory, in order to load <code>R.dll</code>.  It will also 
-locate <code>R.dll</code> if it is on the path.  If run from a 32-bit process, RProvider will use 
+<p>The R Provider requires an installation of R for Windows, downloadable from
+<a href="http://cran.cnr.berkeley.edu/bin/windows/base/">here</a>.  RProvider uses the R registry key
+<code>SOFTWARE\R-core</code> to locate the R binary directory, in order to load <code>R.dll</code>.  It will also
+locate <code>R.dll</code> if it is on the path.  If run from a 32-bit process, RProvider will use
 the 32-bit <code>R.dll</code>, and if run from a 64-bit process, it will load the 64-bit version.</p>
 
-<p>If you are using R 2.15 or later, you should not try to load the RProvider inside a script 
-that is passed to FSI via the <code>--use</code> flag.  It seems that something about the way R 
+<p>If you are using R 2.15 or later, you should not try to load the RProvider inside a script
+that is passed to FSI via the <code>--use</code> flag.  It seems that something about the way R
 initializes causes it to hang in that context.  Works fine if you load later.</p>
 
 <p>For compilation you will need VS2012 / F# 3.0 or later.  For runtime you'll need .NET 4.5.</p>
 
-<h2>License</h2>
+<h2>Contributing and copyright</h2>
 
-<p>FSharpRProvider is covered by the BSD license. The library uses 
-<a href="http://rdotnet.codeplex.com/">RDotNet</a> which is also covered by the BSD license.</p>
+<p>The project has been developed by <a href="https://www.bluemountaincapital.com/">BlueMountain Capital</a>
+and contributors. It is available under the BSD license. The library uses
+<a href="http://rdotnet.codeplex.com/">RDotNet</a> which is also covered by the BSD license.
+For more information see the <a href="https://github.com/blueMountainCapital/FSharpRProvider/blob/master/LICENSE.md">License file</a> in the GitHub repository.</p>
 
-<h2>Acknowledgements</h2>
-
-<p>Many thanks to Mathias Brandewinder for producing the <a href="https://github.com/fsharp/FAKE">FAKE</a> script 
+<p>The project is hosted on <a href="https://github.com/blueMountainCapital/FSharpRProvider">GitHub</a> where you can <a href="https://github.com/blueMountainCapital/FSharpRProvider/issues">report issues</a>, fork
+the project and submit pull requests.
+Many thanks to Mathias Brandewinder for producing the <a href="https://github.com/fsharp/FAKE">FAKE</a> script
 to build the NuGet package, and to Steffen Forkman for writing <a href="https://github.com/fsharp/FAKE">FAKE</a>.</p>
 
-          <div class="tip" id="fs1">val v : obj<br /><br />Full name: index.v</div>
-
+          
         </div>
         <div class="span3">
+          <a href="https://nuget.org/packages/RProvider">
+            <img src="http://bluemountaincapital.github.io/FSharpRProvider/misc/logo.png" style="width:140px;height:140px;margin:10px 0px 0px 35px;border-style:none;" />
+          </a>
 
           <ul class="nav nav-list" id="menu">
             <li class="nav-header">R Provider</li>
-            <li><a href="http://tpetricek.github.io/FSharp.RProvider//index.html">Home page</a></li>
+            <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/index.html">Home page</a></li>
             <li class="divider"></li>
             <li><a href="https://nuget.org/packages/RProvider">Get Library via NuGet</a></li>
             <li><a href="https://github.com/BlueMountainCapital/FSharpRProvider">Source Code on GitHub</a></li>
-            <li><a href="https://github.com/BlueMountainCapital/FSharpRProvider/LICENSE.md">License (Apache 2.0)</a></li>
+            <li><a href="https://github.com/BlueMountainCapital/FSharpRProvider/blob/master/LICENSE.md">License (BSD)</a></li>
+            <li><a href="https://github.com/BlueMountainCapital/FSharpRProvider/issues">Submit bugs or feature requests</a></li>
             
-            <li class="nav-header">Documentation</li>
-            <li><a href="http://tpetricek.github.io/FSharp.RProvider//howto.html">How To</a></li>
-            <li><a href="http://tpetricek.github.io/FSharp.RProvider//whatwhy.html">Whats and Whys</a></li>
-            <li><a href="http://tpetricek.github.io/FSharp.RProvider//tutorial.html">Tutorial</a></li>
+      			<li class="nav-header">Documentation</li>
+            <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/Charts-QuickStart.html">Creating Charts</a></li>
+            <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/Statistics-QuickStart.html">Statistics</a></li>
+            <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/passing-data.html">Passing Data between F# and R</a></li>
             <li class="divider"></li>
-            <li><a href="http://tpetricek.github.io/FSharp.RProvider//internals.html">How Does it Work</a></li>
-            <li><a href="http://tpetricek.github.io/FSharp.RProvider//plugins.html">Plugins</a></li>
+            <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/tutorial.html">Tutorial</a></li>
+            <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/howto.html">How To</a></li>
+						
+            <li class="nav-header">Internals</li>
+            <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/whatwhy.html">Whats and Whys</a></li>
+            <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/internals.html">How Does it Work</a></li>
           </ul>
 
         </div>
