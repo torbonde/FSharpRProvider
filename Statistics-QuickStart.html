@@ -77,8 +77,8 @@ you can reference the required libraries and packages this way:</p>
 <span class="k">open</span> <span onmouseout="hideTip(event, 'fs2', 2)" onmouseover="showTip(event, 'fs2', 2)" class="i">RDotNet</span>
 <span class="k">open</span> <span onmouseout="hideTip(event, 'fs3', 3)" onmouseover="showTip(event, 'fs3', 3)" class="i">RProvider</span>
 <span class="k">open</span> <span onmouseout="hideTip(event, 'fs4', 4)" onmouseover="showTip(event, 'fs4', 4)" class="i">RProvider</span><span class="o">.</span><span class="i">``base``</span>
-<span class="k">open</span> <span onmouseout="hideTip(event, 'fs4', 5)" onmouseover="showTip(event, 'fs4', 5)" class="i">RProvider</span><span class="o">.</span><span class="i">graphics</span>
-<span class="k">open</span> <span onmouseout="hideTip(event, 'fs4', 6)" onmouseover="showTip(event, 'fs4', 6)" class="i">RProvider</span><span class="o">.</span><span class="i">stats</span></pre>
+<span class="k">open</span> <span onmouseout="hideTip(event, 'fs4', 5)" onmouseover="showTip(event, 'fs4', 5)" class="i">RProvider</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs5', 6)" onmouseover="showTip(event, 'fs5', 6)" class="i">graphics</span>
+<span class="k">open</span> <span onmouseout="hideTip(event, 'fs4', 7)" onmouseover="showTip(event, 'fs4', 7)" class="i">RProvider</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs6', 8)" onmouseover="showTip(event, 'fs6', 8)" class="i">stats</span></pre>
 </td>
 </tr>
 </table><p>Once the libraries and packages have been loaded, 
@@ -102,15 +102,15 @@ Imagine that our true model is</p>
 </td>
 <td class="snippet"><pre class="fssnip">
 <span class="c">// Random number generator</span>
-<span class="k">let</span> <span onmouseout="hideTip(event, 'fs5', 7)" onmouseover="showTip(event, 'fs5', 7)" class="i">rng</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs6', 8)" onmouseover="showTip(event, 'fs6', 8)" class="i">Random</span>()
-<span class="k">let</span> <span onmouseout="hideTip(event, 'fs7', 9)" onmouseover="showTip(event, 'fs7', 9)" class="i">rand</span> () <span class="o">=</span> <span onmouseout="hideTip(event, 'fs5', 10)" onmouseover="showTip(event, 'fs5', 10)" class="i">rng</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs8', 11)" onmouseover="showTip(event, 'fs8', 11)" class="i">NextDouble</span>()
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs7', 9)" onmouseover="showTip(event, 'fs7', 9)" class="i">rng</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs8', 10)" onmouseover="showTip(event, 'fs8', 10)" class="i">Random</span>()
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs9', 11)" onmouseover="showTip(event, 'fs9', 11)" class="i">rand</span> () <span class="o">=</span> <span onmouseout="hideTip(event, 'fs7', 12)" onmouseover="showTip(event, 'fs7', 12)" class="i">rng</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs10', 13)" onmouseover="showTip(event, 'fs10', 13)" class="i">NextDouble</span>()
 
 <span class="c">// Generate fake X1 and X2 </span>
-<span class="k">let</span> <span onmouseout="hideTip(event, 'fs9', 12)" onmouseover="showTip(event, 'fs9', 12)" class="i">X1s</span> <span class="o">=</span> [ <span class="k">for</span> <span onmouseout="hideTip(event, 'fs10', 13)" onmouseover="showTip(event, 'fs10', 13)" class="i">i</span> <span class="k">in</span> <span class="n">0</span> <span class="o">..</span> <span class="n">9</span> <span class="k">-&gt;</span> <span class="n">10.</span> <span class="o">*</span> <span onmouseout="hideTip(event, 'fs7', 14)" onmouseover="showTip(event, 'fs7', 14)" class="i">rand</span> () ]
-<span class="k">let</span> <span onmouseout="hideTip(event, 'fs11', 15)" onmouseover="showTip(event, 'fs11', 15)" class="i">X2s</span> <span class="o">=</span> [ <span class="k">for</span> <span onmouseout="hideTip(event, 'fs10', 16)" onmouseover="showTip(event, 'fs10', 16)" class="i">i</span> <span class="k">in</span> <span class="n">0</span> <span class="o">..</span> <span class="n">9</span> <span class="k">-&gt;</span> <span class="n">5.</span> <span class="o">*</span> <span onmouseout="hideTip(event, 'fs7', 17)" onmouseover="showTip(event, 'fs7', 17)" class="i">rand</span> () ]
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs11', 14)" onmouseover="showTip(event, 'fs11', 14)" class="i">X1s</span> <span class="o">=</span> [ <span class="k">for</span> <span onmouseout="hideTip(event, 'fs12', 15)" onmouseover="showTip(event, 'fs12', 15)" class="i">i</span> <span class="k">in</span> <span class="n">0</span> <span class="o">..</span> <span class="n">9</span> <span class="k">-&gt;</span> <span class="n">10.</span> <span class="o">*</span> <span onmouseout="hideTip(event, 'fs9', 16)" onmouseover="showTip(event, 'fs9', 16)" class="i">rand</span> () ]
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs13', 17)" onmouseover="showTip(event, 'fs13', 17)" class="i">X2s</span> <span class="o">=</span> [ <span class="k">for</span> <span onmouseout="hideTip(event, 'fs12', 18)" onmouseover="showTip(event, 'fs12', 18)" class="i">i</span> <span class="k">in</span> <span class="n">0</span> <span class="o">..</span> <span class="n">9</span> <span class="k">-&gt;</span> <span class="n">5.</span> <span class="o">*</span> <span onmouseout="hideTip(event, 'fs9', 19)" onmouseover="showTip(event, 'fs9', 19)" class="i">rand</span> () ]
 
 <span class="c">// Build Ys, following the &quot;true&quot; model</span>
-<span class="k">let</span> <span onmouseout="hideTip(event, 'fs12', 18)" onmouseover="showTip(event, 'fs12', 18)" class="i">Ys</span> <span class="o">=</span> [ <span class="k">for</span> <span onmouseout="hideTip(event, 'fs10', 19)" onmouseover="showTip(event, 'fs10', 19)" class="i">i</span> <span class="k">in</span> <span class="n">0</span> <span class="o">..</span> <span class="n">9</span> <span class="k">-&gt;</span> <span class="n">5.</span> <span class="o">+</span> <span class="n">3.</span> <span class="o">*</span> <span onmouseout="hideTip(event, 'fs9', 20)" onmouseover="showTip(event, 'fs9', 20)" class="i">X1s</span><span class="o">.</span>[<span onmouseout="hideTip(event, 'fs10', 21)" onmouseover="showTip(event, 'fs10', 21)" class="i">i</span>] <span class="o">-</span> <span class="n">2.</span> <span class="o">*</span> <span onmouseout="hideTip(event, 'fs11', 22)" onmouseover="showTip(event, 'fs11', 22)" class="i">X2s</span><span class="o">.</span>[<span onmouseout="hideTip(event, 'fs10', 23)" onmouseover="showTip(event, 'fs10', 23)" class="i">i</span>] <span class="o">+</span> <span onmouseout="hideTip(event, 'fs7', 24)" onmouseover="showTip(event, 'fs7', 24)" class="i">rand</span> () ]</pre>
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs14', 20)" onmouseover="showTip(event, 'fs14', 20)" class="i">Ys</span> <span class="o">=</span> [ <span class="k">for</span> <span onmouseout="hideTip(event, 'fs12', 21)" onmouseover="showTip(event, 'fs12', 21)" class="i">i</span> <span class="k">in</span> <span class="n">0</span> <span class="o">..</span> <span class="n">9</span> <span class="k">-&gt;</span> <span class="n">5.</span> <span class="o">+</span> <span class="n">3.</span> <span class="o">*</span> <span onmouseout="hideTip(event, 'fs11', 22)" onmouseover="showTip(event, 'fs11', 22)" class="i">X1s</span><span class="o">.</span>[<span onmouseout="hideTip(event, 'fs12', 23)" onmouseover="showTip(event, 'fs12', 23)" class="i">i</span>] <span class="o">-</span> <span class="n">2.</span> <span class="o">*</span> <span onmouseout="hideTip(event, 'fs13', 24)" onmouseover="showTip(event, 'fs13', 24)" class="i">X2s</span><span class="o">.</span>[<span onmouseout="hideTip(event, 'fs12', 25)" onmouseover="showTip(event, 'fs12', 25)" class="i">i</span>] <span class="o">+</span> <span onmouseout="hideTip(event, 'fs9', 26)" onmouseover="showTip(event, 'fs9', 26)" class="i">rand</span> () ]</pre>
 </td>
 </tr>
 </table><p>Using linear regression on this dataset, we should be able to 
@@ -129,12 +129,12 @@ to name our vectors, and use these names in R formulas afterwards:</p>
 </pre>
 </td>
 <td class="snippet"><pre class="fssnip">
-<span class="k">let</span> <span onmouseout="hideTip(event, 'fs13', 25)" onmouseover="showTip(event, 'fs13', 25)" class="i">dataset</span> <span class="o">=</span>
-    <span onmouseout="hideTip(event, 'fs14', 26)" onmouseover="showTip(event, 'fs14', 26)" class="i">namedParams</span> [
-        <span class="s">&quot;</span><span class="s">Y</span><span class="s">&quot;</span>, <span onmouseout="hideTip(event, 'fs15', 27)" onmouseover="showTip(event, 'fs15', 27)" class="i">box</span> <span onmouseout="hideTip(event, 'fs12', 28)" onmouseover="showTip(event, 'fs12', 28)" class="i">Ys</span>;
-        <span class="s">&quot;</span><span class="s">X1</span><span class="s">&quot;</span>, <span onmouseout="hideTip(event, 'fs15', 29)" onmouseover="showTip(event, 'fs15', 29)" class="i">box</span> <span onmouseout="hideTip(event, 'fs9', 30)" onmouseover="showTip(event, 'fs9', 30)" class="i">X1s</span>;
-        <span class="s">&quot;</span><span class="s">X2</span><span class="s">&quot;</span>, <span onmouseout="hideTip(event, 'fs15', 31)" onmouseover="showTip(event, 'fs15', 31)" class="i">box</span> <span onmouseout="hideTip(event, 'fs11', 32)" onmouseover="showTip(event, 'fs11', 32)" class="i">X2s</span>; ]
-    <span class="o">|&gt;</span> <span class="i">R</span><span class="o">.</span><span class="i">data_frame</span></pre>
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs15', 27)" onmouseover="showTip(event, 'fs15', 27)" class="i">dataset</span> <span class="o">=</span>
+    <span onmouseout="hideTip(event, 'fs16', 28)" onmouseover="showTip(event, 'fs16', 28)" class="i">namedParams</span> [
+        <span class="s">&quot;</span><span class="s">Y</span><span class="s">&quot;</span>, <span onmouseout="hideTip(event, 'fs17', 29)" onmouseover="showTip(event, 'fs17', 29)" class="i">box</span> <span onmouseout="hideTip(event, 'fs14', 30)" onmouseover="showTip(event, 'fs14', 30)" class="i">Ys</span>;
+        <span class="s">&quot;</span><span class="s">X1</span><span class="s">&quot;</span>, <span onmouseout="hideTip(event, 'fs17', 31)" onmouseover="showTip(event, 'fs17', 31)" class="i">box</span> <span onmouseout="hideTip(event, 'fs11', 32)" onmouseover="showTip(event, 'fs11', 32)" class="i">X1s</span>;
+        <span class="s">&quot;</span><span class="s">X2</span><span class="s">&quot;</span>, <span onmouseout="hideTip(event, 'fs17', 33)" onmouseover="showTip(event, 'fs17', 33)" class="i">box</span> <span onmouseout="hideTip(event, 'fs13', 34)" onmouseover="showTip(event, 'fs13', 34)" class="i">X2s</span>; ]
+    <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs18', 35)" onmouseover="showTip(event, 'fs18', 35)" class="i">R</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs18', 36)" onmouseover="showTip(event, 'fs18', 36)" class="i">data_frame</span></pre>
 </td>
 </tr>
 </table><p>We can now use R to perform a linear regression.
@@ -147,7 +147,7 @@ for more on their somewhat esoteric construction)</p>
 </pre>
 </td>
 <td class="snippet"><pre class="fssnip">
-<span class="k">let</span> <span onmouseout="hideTip(event, 'fs16', 33)" onmouseover="showTip(event, 'fs16', 33)" class="i">result</span> <span class="o">=</span> <span class="i">R</span><span class="o">.</span><span class="i">lm</span>(<span class="i">formula</span> <span class="o">=</span> <span class="s">&quot;</span><span class="s">Y</span><span class="s">~</span><span class="s">X1</span><span class="s">+</span><span class="s">X2</span><span class="s">&quot;</span>, <span class="i">data</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs13', 34)" onmouseover="showTip(event, 'fs13', 34)" class="i">dataset</span>)</pre>
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs19', 37)" onmouseover="showTip(event, 'fs19', 37)" class="i">result</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs18', 38)" onmouseover="showTip(event, 'fs18', 38)" class="i">R</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs20', 39)" onmouseover="showTip(event, 'fs20', 39)" class="i">lm</span>(<span class="i">formula</span> <span class="o">=</span> <span class="s">&quot;</span><span class="s">Y</span><span class="s">~</span><span class="s">X1</span><span class="s">+</span><span class="s">X2</span><span class="s">&quot;</span>, <span class="i">data</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs15', 40)" onmouseover="showTip(event, 'fs15', 40)" class="i">dataset</span>)</pre>
 </td>
 </tr>
 </table><h2>Extracting Results from R to F#</h2>
@@ -172,8 +172,8 @@ which are both R vectors containg floats:</p>
 </pre>
 </td>
 <td class="snippet"><pre class="fssnip">
-<span class="k">let</span> <span onmouseout="hideTip(event, 'fs17', 35)" onmouseover="showTip(event, 'fs17', 35)" class="i">coefficients</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs16', 36)" onmouseover="showTip(event, 'fs16', 36)" class="i">result</span><span class="o">.</span><span class="i">AsList</span>()<span class="o">.</span>[<span class="s">&quot;</span><span class="s">coefficients</span><span class="s">&quot;</span>]<span class="o">.</span><span class="i">AsNumeric</span>()
-<span class="k">let</span> <span onmouseout="hideTip(event, 'fs18', 37)" onmouseover="showTip(event, 'fs18', 37)" class="i">residuals</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs16', 38)" onmouseover="showTip(event, 'fs16', 38)" class="i">result</span><span class="o">.</span><span class="i">AsList</span>()<span class="o">.</span>[<span class="s">&quot;</span><span class="s">residuals</span><span class="s">&quot;</span>]<span class="o">.</span><span class="i">AsNumeric</span>()</pre>
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs21', 41)" onmouseover="showTip(event, 'fs21', 41)" class="i">coefficients</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs19', 42)" onmouseover="showTip(event, 'fs19', 42)" class="i">result</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs22', 43)" onmouseover="showTip(event, 'fs22', 43)" class="i">AsList</span>()<span class="o">.</span>[<span class="s">&quot;</span><span class="s">coefficients</span><span class="s">&quot;</span>]<span class="o">.</span><span class="i">AsNumeric</span>()
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs23', 44)" onmouseover="showTip(event, 'fs23', 44)" class="i">residuals</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs19', 45)" onmouseover="showTip(event, 'fs19', 45)" class="i">result</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs22', 46)" onmouseover="showTip(event, 'fs22', 46)" class="i">AsList</span>()<span class="o">.</span>[<span class="s">&quot;</span><span class="s">residuals</span><span class="s">&quot;</span>]<span class="o">.</span><span class="i">AsNumeric</span>()</pre>
 </td>
 </tr>
 </table><p>We can also produce summary statistics about our model,
@@ -186,8 +186,8 @@ See <a href="http://stat.ethz.ch/R-manual/R-patched/library/stats/html/summary.l
 </pre>
 </td>
 <td class="snippet"><pre class="fssnip">
-<span class="k">let</span> <span onmouseout="hideTip(event, 'fs19', 39)" onmouseover="showTip(event, 'fs19', 39)" class="i">summary</span> <span class="o">=</span> <span class="i">R</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs19', 40)" onmouseover="showTip(event, 'fs19', 40)" class="i">summary</span>(<span onmouseout="hideTip(event, 'fs16', 41)" onmouseover="showTip(event, 'fs16', 41)" class="i">result</span>)
-<span onmouseout="hideTip(event, 'fs19', 42)" onmouseover="showTip(event, 'fs19', 42)" class="i">summary</span><span class="o">.</span><span class="i">AsList</span>()<span class="o">.</span>[<span class="s">&quot;</span><span class="s">r</span><span class="s">.</span><span class="s">squared</span><span class="s">&quot;</span>]<span class="o">.</span><span class="i">AsNumeric</span>()</pre>
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs24', 47)" onmouseover="showTip(event, 'fs24', 47)" class="i">summary</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs18', 48)" onmouseover="showTip(event, 'fs18', 48)" class="i">R</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs18', 49)" onmouseover="showTip(event, 'fs18', 49)" class="i">summary</span>(<span onmouseout="hideTip(event, 'fs19', 50)" onmouseover="showTip(event, 'fs19', 50)" class="i">result</span>)
+<span onmouseout="hideTip(event, 'fs24', 51)" onmouseover="showTip(event, 'fs24', 51)" class="i">summary</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs22', 52)" onmouseover="showTip(event, 'fs22', 52)" class="i">AsList</span>()<span class="o">.</span>[<span class="s">&quot;</span><span class="s">r</span><span class="s">.</span><span class="s">squared</span><span class="s">&quot;</span>]<span class="o">.</span><span class="i">AsNumeric</span>()</pre>
 </td>
 </tr>
 </table><p>Finally, we can directly pass results, which is a R expression,
@@ -197,7 +197,7 @@ to R.plot, to produce some fancy charts describing our model:</p>
 </pre>
 </td>
 <td class="snippet"><pre class="fssnip">
-<span class="i">R</span><span class="o">.</span><span class="i">plot</span> <span onmouseout="hideTip(event, 'fs16', 43)" onmouseover="showTip(event, 'fs16', 43)" class="i">result</span></pre>
+<span onmouseout="hideTip(event, 'fs18', 53)" onmouseover="showTip(event, 'fs18', 53)" class="i">R</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs18', 54)" onmouseover="showTip(event, 'fs18', 54)" class="i">plot</span> <span onmouseout="hideTip(event, 'fs19', 55)" onmouseover="showTip(event, 'fs19', 55)" class="i">result</span></pre>
 </td>
 </tr>
 </table><p>That's it - while simple, we hope this example illustrate
@@ -209,21 +209,26 @@ remain the same. Happy modelling!</p>
 <div class="tip" id="fs2">namespace RDotNet</div>
 <div class="tip" id="fs3">namespace RProvider</div>
 <div class="tip" id="fs4">Multiple items<br />namespace RProvider<br /><br />--------------------<br />type RProvider =<br />&#160;&#160;inherit TypeProviderForNamespaces<br />&#160;&#160;new : cfg:TypeProviderConfig -&gt; RProvider<br /><br />Full name: RProvider.RProvider<br /><br />--------------------<br />new : cfg:CompilerServices.TypeProviderConfig -&gt; RProvider</div>
-<div class="tip" id="fs5">val rng : Random<br /><br />Full name: Statistics-QuickStart.rng</div>
-<div class="tip" id="fs6">Multiple items<br />type Random =<br />&#160;&#160;new : unit -&gt; Random + 1 overload<br />&#160;&#160;member Next : unit -&gt; int + 2 overloads<br />&#160;&#160;member NextBytes : buffer:byte[] -&gt; unit<br />&#160;&#160;member NextDouble : unit -&gt; float<br /><br />Full name: System.Random<br /><br />--------------------<br />Random() : unit<br />Random(Seed: int) : unit</div>
-<div class="tip" id="fs7">val rand : unit -&gt; float<br /><br />Full name: Statistics-QuickStart.rand</div>
-<div class="tip" id="fs8">Random.NextDouble() : float</div>
-<div class="tip" id="fs9">val X1s : float list<br /><br />Full name: Statistics-QuickStart.X1s</div>
-<div class="tip" id="fs10">val i : int</div>
-<div class="tip" id="fs11">val X2s : float list<br /><br />Full name: Statistics-QuickStart.X2s</div>
-<div class="tip" id="fs12">val Ys : float list<br /><br />Full name: Statistics-QuickStart.Ys</div>
-<div class="tip" id="fs13">val dataset : obj<br /><br />Full name: Statistics-QuickStart.dataset</div>
-<div class="tip" id="fs14">val namedParams : s:seq&lt;string * &#39;a&gt; -&gt; Collections.Generic.IDictionary&lt;string,obj&gt;<br /><br />Full name: RProvider.Helpers.namedParams</div>
-<div class="tip" id="fs15">val box : value:&#39;T -&gt; obj<br /><br />Full name: Microsoft.FSharp.Core.Operators.box</div>
-<div class="tip" id="fs16">val result : obj<br /><br />Full name: Statistics-QuickStart.result</div>
-<div class="tip" id="fs17">val coefficients : obj<br /><br />Full name: Statistics-QuickStart.coefficients</div>
-<div class="tip" id="fs18">val residuals : obj<br /><br />Full name: Statistics-QuickStart.residuals</div>
-<div class="tip" id="fs19">val summary : obj<br /><br />Full name: Statistics-QuickStart.summary</div>
+<div class="tip" id="fs5">namespace RProvider.graphics</div>
+<div class="tip" id="fs6">namespace RProvider.stats</div>
+<div class="tip" id="fs7">val rng : Random<br /><br />Full name: Statistics-QuickStart.rng</div>
+<div class="tip" id="fs8">Multiple items<br />type Random =<br />&#160;&#160;new : unit -&gt; Random + 1 overload<br />&#160;&#160;member Next : unit -&gt; int + 2 overloads<br />&#160;&#160;member NextBytes : buffer:byte[] -&gt; unit<br />&#160;&#160;member NextDouble : unit -&gt; float<br /><br />Full name: System.Random<br /><br />--------------------<br />Random() : unit<br />Random(Seed: int) : unit</div>
+<div class="tip" id="fs9">val rand : unit -&gt; float<br /><br />Full name: Statistics-QuickStart.rand</div>
+<div class="tip" id="fs10">Random.NextDouble() : float</div>
+<div class="tip" id="fs11">val X1s : float list<br /><br />Full name: Statistics-QuickStart.X1s</div>
+<div class="tip" id="fs12">val i : int</div>
+<div class="tip" id="fs13">val X2s : float list<br /><br />Full name: Statistics-QuickStart.X2s</div>
+<div class="tip" id="fs14">val Ys : float list<br /><br />Full name: Statistics-QuickStart.Ys</div>
+<div class="tip" id="fs15">val dataset : SymbolicExpression<br /><br />Full name: Statistics-QuickStart.dataset</div>
+<div class="tip" id="fs16">val namedParams : s:seq&lt;string * &#39;a&gt; -&gt; Collections.Generic.IDictionary&lt;string,obj&gt;<br /><br />Full name: RProvider.Helpers.namedParams</div>
+<div class="tip" id="fs17">val box : value:&#39;T -&gt; obj<br /><br />Full name: Microsoft.FSharp.Core.Operators.box</div>
+<div class="tip" id="fs18"></div>
+<div class="tip" id="fs19">val result : SymbolicExpression<br /><br />Full name: Statistics-QuickStart.result</div>
+<div class="tip" id="fs20">R.lm(paramsByName: Collections.Generic.IDictionary&lt;string,obj&gt;) : SymbolicExpression<br />R.lm(?formula: obj, ?data: obj, ?subset: obj, ?weights: obj, ?na_action: obj, ?method: obj, ?model: obj, ?x: obj, ?y: obj, ?qr: obj, ?singular_ok: obj, ?contrasts: obj, ?offset: obj, ?paramArray: obj []) : SymbolicExpression<br /><em><br /><br />Fitting Linear Models</em></div>
+<div class="tip" id="fs21">val coefficients : NumericVector<br /><br />Full name: Statistics-QuickStart.coefficients</div>
+<div class="tip" id="fs22">SymbolicExpression.AsList() : GenericVector</div>
+<div class="tip" id="fs23">val residuals : NumericVector<br /><br />Full name: Statistics-QuickStart.residuals</div>
+<div class="tip" id="fs24">val summary : SymbolicExpression<br /><br />Full name: Statistics-QuickStart.summary</div>
 
         </div>
         <div class="span3">
