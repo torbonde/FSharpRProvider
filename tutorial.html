@@ -5,7 +5,7 @@
     <title>R Provider Tutorial
 </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="An F# Type Provider providing strongly typed access to the R statistical package.">
+    <meta name="description" content="An F# Type Provider providing strongly typed access to the R statistical package">
     <meta name="author" content="BlueMountain Capital">
 
     <script src="http://code.jquery.com/jquery-1.8.0.js"></script>
@@ -13,8 +13,8 @@
     <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
     <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet">
 
-    <link type="text/css" rel="stylesheet" href="http://bluemountaincapital.github.io/FSharpRProvider/content/style.css" />
-    <script src="http://bluemountaincapital.github.io/FSharpRProvider/content/tips.js" type="text/javascript"></script>
+    <link type="text/css" rel="stylesheet" href="http://bluemountaincapital.github.io/Deedle/content/style.css" />
+    <script type="text/javascript" src="http://bluemountaincapital.github.io/Deedle/content/tips.js"></script>
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -24,23 +24,26 @@
     <div class="container">
       <div class="masthead">
         <ul class="nav nav-pills pull-right">
-          <li><a href="https://github.com/BlueMountainCapital/FSharpRProvider">github page</a></li>
+          <li><a href="http://fsharp.org">fsharp.org</a></li>
+          <li><a href="http://github.com/BlueMountainCapital/FSharpRProvider">github page</a></li>
+          <li><a href="http://bluemountaincapital.github.io/Deedle">Deedle</a></li>
           <li><a href="http://fsharp.github.io/FSharp.Charting/">F# Charting</a></li>
           <li><a href="http://fsharp.github.io/FSharp.Data/">F# Data</a></li>
-          <li><a href="http://fsharp.org">fsharp.org</a></li>
         </ul>
-        <h3 class="muted">R Type Provider</h3>
+        <h3 class="muted">Deedle</h3>
       </div>
       <hr />
       <div class="row">
         <div class="span9" id="main">
-          <h1>R Provider Tutorial</h1>
+          
+<h1>R Provider Tutorial</h1>
 
 <h2>Referencing the provider</h2>
 
 <p>In order to use the R provider, you need to reference the <code>RDotNet.dll</code> library
 (which is a .NET connector for R) and the <code>RProvider.dll</code> itself. For this tutorial,
 we use <code>open</code> to reference a number of packages including <code>stats</code>, <code>tseries</code> and <code>zoo</code>:</p>
+
 <table class="pre"><tr><td class="lines"><pre class="fssnip">
 <span class="l"> 1: </span>
 <span class="l"> 2: </span>
@@ -79,7 +82,9 @@ we use <code>open</code> to reference a number of packages including <code>stats
 <span class="k">open</span> <span onmouseout="hideTip(event, 'fs8', 13)" onmouseover="showTip(event, 'fs8', 13)" class="i">System</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs9', 14)" onmouseover="showTip(event, 'fs9', 14)" class="i">Net</span></pre>
 </td>
 </tr>
-</table><p>If either of the namespaces above are unrecognized, you need to install the package in R
+</table>
+
+<p>If either of the namespaces above are unrecognized, you need to install the package in R
 using <code>install.packages("stats")</code>.</p>
 
 <h2>Obtaining data</h2>
@@ -91,6 +96,7 @@ prices from the Yahoo Finance portal. For more information, see the documentatio
 <p>The following snippet uses the CSV type provider to generate a type <code>Stocks</code> that can be
 used for parsing CSV data from Yahoo. Then it defines a function <code>getStockPrices</code> that returns
 array with prices for the specified stock and a specified number of days:</p>
+
 <table class="pre"><tr><td class="lines"><pre class="fssnip">
 <span class="l"> 1: </span>
 <span class="l"> 2: </span>
@@ -125,11 +131,14 @@ array with prices for the specified stock and a specified number of days:</p>
 <span class="k">let</span> <span onmouseout="hideTip(event, 'fs25', 35)" onmouseover="showTip(event, 'fs25', 35)" class="i">msftOpens</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs14', 36)" onmouseover="showTip(event, 'fs14', 36)" class="i">getStockPrices</span> <span class="s">&quot;</span><span class="s">MSFT</span><span class="s">&quot;</span> <span class="n">255</span></pre>
 </td>
 </tr>
-</table><h2>Calling R functions</h2>
+</table>
+
+<h2>Calling R functions</h2>
 
 <p>Now, we're ready to call R functions using the type provider. The following snippet takes
 <code>msftOpens</code>, calculates logarithm of the values using <code>R.log</code> and then calculates the 
 differences of the resulting vector using <code>R.diff</code>:</p>
+
 <table class="pre"><tr><td class="lines"><pre class="fssnip">
 <span class="l">1: </span>
 <span class="l">2: </span>
@@ -140,9 +149,12 @@ differences of the resulting vector using <code>R.diff</code>:</p>
 <span class="k">let</span> <span onmouseout="hideTip(event, 'fs26', 37)" onmouseover="showTip(event, 'fs26', 37)" class="i">msft</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs25', 38)" onmouseover="showTip(event, 'fs25', 38)" class="i">msftOpens</span> <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs27', 39)" onmouseover="showTip(event, 'fs27', 39)" class="i">R</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs28', 40)" onmouseover="showTip(event, 'fs28', 40)" class="i">log</span> <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs27', 41)" onmouseover="showTip(event, 'fs27', 41)" class="i">R</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs29', 42)" onmouseover="showTip(event, 'fs29', 42)" class="i">diff</span></pre>
 </td>
 </tr>
-</table><p>If you want to see the resulting values, you can call <code>msft.AsVector()</code> in F# Interactive.
+</table>
+
+<p>If you want to see the resulting values, you can call <code>msft.AsVector()</code> in F# Interactive.
 Next, we use the <code>acf</code> function to display the atuo-correlation and call <code>adf_test</code> to
 see if the <code>msft</code> returns are stationary/non-unit root:</p>
+
 <table class="pre"><tr><td class="lines"><pre class="fssnip">
 <span class="l">1: </span>
 <span class="l">2: </span>
@@ -153,15 +165,18 @@ see if the <code>msft</code> returns are stationary/non-unit root:</p>
 <span class="k">let</span> <span onmouseout="hideTip(event, 'fs33', 47)" onmouseover="showTip(event, 'fs33', 47)" class="i">adf</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs34', 48)" onmouseover="showTip(event, 'fs34', 48)" class="i">R</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs35', 49)" onmouseover="showTip(event, 'fs35', 49)" class="i">adf_test</span>(<span onmouseout="hideTip(event, 'fs26', 50)" onmouseover="showTip(event, 'fs26', 50)" class="i">msft</span>) </pre>
 </td>
 </tr>
-</table><p>After running the first snippet, a window similar to the following should appear (note that
+</table>
+
+<p>After running the first snippet, a window similar to the following should appear (note that
 it might not appear as a top-most window).</p>
 
 <div style="text-align:center">
-<img src="img/acf.png" />
+<img src="images/acf.png" />
 </div>
 
 <p>Finally, we can obtain data for multiple different indicators and use the <code>R.pairs</code> function
 to produce a matrix of scatter plots:</p>
+
 <table class="pre"><tr><td class="lines"><pre class="fssnip">
 <span class="l"> 1: </span>
 <span class="l"> 2: </span>
@@ -190,13 +205,15 @@ to produce a matrix of scatter plots:</p>
 <span onmouseout="hideTip(event, 'fs43', 68)" onmouseover="showTip(event, 'fs43', 68)" class="i">R</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs44', 69)" onmouseover="showTip(event, 'fs44', 69)" class="i">pairs</span>(<span onmouseout="hideTip(event, 'fs40', 70)" onmouseover="showTip(event, 'fs40', 70)" class="i">df</span>)</pre>
 </td>
 </tr>
-</table><p>As a result, you should see a window showing results similar to these:</p>
+</table>
+
+<p>As a result, you should see a window showing results similar to these:</p>
 
 <div style="text-align:center">
-<img src="img/pairs.png" />
+<img src="images/pairs.png" />
 </div>
 
-          <div class="tip" id="fs1">namespace RDotNet</div>
+<div class="tip" id="fs1">namespace RDotNet</div>
 <div class="tip" id="fs2">namespace RProvider</div>
 <div class="tip" id="fs3">Multiple items<br />namespace RProvider<br /><br />--------------------<br />type RProvider =<br />&#160;&#160;inherit TypeProviderForNamespaces<br />&#160;&#160;new : cfg:TypeProviderConfig -&gt; RProvider<br /><br />Full name: RProvider.RProvider<br /><br />--------------------<br />new : cfg:CompilerServices.TypeProviderConfig -&gt; RProvider</div>
 <div class="tip" id="fs4">namespace RProvider.graphics</div>
@@ -244,34 +261,45 @@ to produce a matrix of scatter plots:</p>
         </div>
         <div class="span3">
           <a href="https://nuget.org/packages/RProvider">
-            <img src="http://bluemountaincapital.github.io/FSharpRProvider/misc/logo.png" style="width:140px;height:140px;margin:10px 0px 0px 35px;border-style:none;" />
+            <img src="http://bluemountaincapital.github.io/Deedle/images/logo.png" style="width:140px;height:140px;margin:10px 0px 0px 35px;border-style:none;" />
           </a>
 
           <ul class="nav nav-list" id="menu">
-            <li class="nav-header">R Provider</li>
-            <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/index.html">Home page</a></li>
+            <li class="nav-header">Deedle</li>
+            <li><a href="http://bluemountaincapital.github.io/Deedle/index.html">Home page</a></li>
             <li class="divider"></li>
             <li><a href="https://nuget.org/packages/RProvider">Get Library via NuGet</a></li>
-            <li><a href="https://github.com/BlueMountainCapital/FSharpRProvider">Source Code on GitHub</a></li>
-            <li><a href="https://github.com/BlueMountainCapital/FSharpRProvider/blob/master/LICENSE.md">License (BSD)</a></li>
-            <li><a href="https://github.com/BlueMountainCapital/FSharpRProvider/issues">Submit bugs or feature requests</a></li>
-            
-      			<li class="nav-header">Documentation</li>
-            <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/Charts-QuickStart.html">Creating Charts</a></li>
-            <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/Statistics-QuickStart.html">Statistics</a></li>
-            <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/passing-data.html">Passing Data between F# and R</a></li>
-            <li class="divider"></li>
-            <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/tutorial.html">Tutorial</a></li>
-            <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/howto.html">How To</a></li>
-						
-            <li class="nav-header">Internals</li>
-            <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/whatwhy.html">Whats and Whys</a></li>
-            <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/internals.html">How Does it Work</a></li>
-          </ul>
+            <li><a href="http://github.com/BlueMountainCapital/FSharpRProvider">Source Code on GitHub</a></li>
+            <li><a href="http://github.com/BlueMountainCapital/FSharpRProvider/blob/master/LICENSE.md">License (BSD)</a></li>
+            <li><a href="http://github.com/BlueMountainCapital/FSharpRProvider/blob/master/RELEASE_NOTES.md">Release Notes</a></li>
+            <li><a href="http://github.com/BlueMountainCapital/FSharpRProvider/issues">Bug reports & feature requests</a></li>
 
+            <li class="nav-header">Documentation</li>
+            <li><a href="http://bluemountaincapital.github.io/Deedle/Charts-QuickStart.html">Creating charts</a></li>
+            <li><a href="http://bluemountaincapital.github.io/Deedle/Statistics-QuickStart.html">Statistics</a></li>
+            <li><a href="http://bluemountaincapital.github.io/Deedle/passing-data.html">Passing data between F# and R</a></li>
+            <li class="divider"></li>
+            <li><a href="http://bluemountaincapital.github.io/Deedle/tutorial.html">Analysing stock prices</a></li>
+            <li><a href="http://bluemountaincapital.github.io/Deedle/howto.html">R packages & naming</a></li>
+
+            <li class="nav-header">Internals</li>
+            <li><a href="http://bluemountaincapital.github.io/Deedle/whatwhy.html">Whats and whys</a></li>
+            <li><a href="http://bluemountaincapital.github.io/Deedle/internals.html">How does it work</a></li>
+            
+          </ul>
         </div>
       </div>
     </div>
-    <a href="https://github.com/BlueMountainCapital/FSharpRProvider"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+    <a href="http://github.com/BlueMountainCapital/FSharpRProvider"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+      ga('create', 'UA-45379232-2', 'bluemountaincapital.github.io');
+      ga('send', 'pageview');
+    </script>
   </body>
-  </html>
+</html>
