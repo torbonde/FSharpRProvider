@@ -8,10 +8,11 @@
     <meta name="description" content="An F# Type Provider providing strongly typed access to the R statistical package">
     <meta name="author" content="BlueMountain Capital">
 
-    <script src="http://code.jquery.com/jquery-1.8.0.js"></script>
-    <script src="http://code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
-    <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
-    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.8.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet">
 
     <link type="text/css" rel="stylesheet" href="http://bluemountaincapital.github.io/FSharpRProvider/content/style.css" />
     <script type="text/javascript" src="http://bluemountaincapital.github.io/FSharpRProvider/content/tips.js"></script>
@@ -25,12 +26,12 @@
       <div class="masthead">
         <ul class="nav nav-pills pull-right">
           <li><a href="http://fsharp.org">fsharp.org</a></li>
-          <li><a href="http://github.com/BlueMountainCapital/FSharpRProvider">github page</a></li>
-          <li><a href="http://bluemountaincapital.github.io/Deedle">Deedle</a></li>
-          <li><a href="http://fsharp.github.io/FSharp.Charting/">F# Charting</a></li>
-          <li><a href="http://fsharp.github.io/FSharp.Data/">F# Data</a></li>
+          <li><a href="http://bluemountaincapital.github.io/Deedle"><img height="16" width="16" src="http://fsharp.org/images/thumbs/Deedle.png" /> Deedle</a></li>
+          <li><a href="http://fsharp.github.io/FSharp.Charting/"><img height="16" width="16" src="http://fsharp.org/images/thumbs/FSharp.Charting.png" /> F# Charting</a></li>
+          <li><a href="http://fsharp.github.io/FSharp.Data"><img height="16" width="16" src="http://fsharp.org/images/thumbs/FSharp.Data.png" /> F# Data</a></li>
+          <li><a href="http://fsprojects.github.io/FSharp.Data.Toolbox"><img height="16" width="16" src="http://fsharp.org/images/thumbs/FSharp.Data.Toolbox.png" /> F# Data Toolbox</a></li>
         </ul>
-        <h3 class="muted">R Type Provider</h3>
+        <h3 class="muted"><a href="http://bluemountaincapital.github.io/FSharpRProvider/index.html">R Type Provider</a></h3>
       </div>
       <hr />
       <div class="row">
@@ -51,8 +52,15 @@
 <ul>
 <li><p>R allows named arguments to appear <em>after</em> the ... argument, whereas .NET requires the ParamArray argument to be at the end.  Some R functions use this convention because their primary arguments are passed in the ... argument and the named arguments will sometimes be used to modify the behavior of the function.  From the RProvider you will to supply values for the positional arguments before you can pass to the ... argument.  If you don't want to supply a value to one of these arguments, you can explicitly pass System.Reflection.Missing.</p></li>
 <li><p>Parameters passed to the R ... argument can also be passed using a name.  Those names are accessible to the calling function.  Example are list and dataframe construction (R.list, and R.data_frame).  To pass arguments this way, you can use the overload of each function that takes an IDictionary<string, obj>, either directly, or using the namedParams function.  For example:</p>
-<pre><code>R.data_frame(namedParams [ "A", [|1;2;3|]; "B", [|4;5;6|] ])
-</code></pre></li>
+<table class="pre"><tr><td class="lines"><pre class="fssnip">
+<span class="l">1: </span>
+</pre>
+</td>
+<td class="snippet"><pre class="fssnip">
+<span class="i">R</span><span class="o">.</span><span class="i">data_frame</span>(<span class="i">namedParams</span> [ <span class="s">&quot;</span><span class="s">A</span><span class="s">&quot;</span>, [|<span class="n">1</span>;<span class="n">2</span>;<span class="n">3</span>|]; <span class="s">&quot;</span><span class="s">B</span><span class="s">&quot;</span>, [|<span class="n">4</span>;<span class="n">5</span>;<span class="n">6</span>|] ])</pre>
+</td>
+</tr>
+</table></li>
 </ul></li>
 </ul>
 
@@ -177,7 +185,7 @@
 <div class="tip" id="fs3">R.eval(paramsByName: Collections.Generic.IDictionary&lt;string,obj&gt;) : SymbolicExpression<br />R.eval(?expr: obj, ?envir: obj, ?enclos: obj) : SymbolicExpression<br /><em><br /><br />Evaluate an (Unevaluated) Expression</em></div>
 <div class="tip" id="fs4">R.parse(paramsByName: Collections.Generic.IDictionary&lt;string,obj&gt;) : SymbolicExpression<br />R.parse(?file: obj, ?n: obj, ?text: obj, ?prompt: obj, ?keep_source: obj, ?srcfile: obj, ?encoding: obj) : SymbolicExpression<br /><em><br /><br />Parse Expressions</em></div>
 <div class="tip" id="fs5">val nums : SymbolicExpression<br /><br />Full name: Passing-data.nums</div>
-<div class="tip" id="fs6">R.sapply(paramsByName: Collections.Generic.IDictionary&lt;string,obj&gt;) : SymbolicExpression<br />R.sapply(?X: obj, ?FUN: obj, ?simplify: obj, ?USE_NAMES: obj, ?paramArray: obj []) : SymbolicExpression<br /><em><br /><br />No documentation available</em></div>
+<div class="tip" id="fs6">R.sapply(paramsByName: Collections.Generic.IDictionary&lt;string,obj&gt;) : SymbolicExpression<br />R.sapply(?X: obj, ?FUN: obj, ?___: obj, ?simplify: obj, ?USE_NAMES: obj, ?paramArray: obj []) : SymbolicExpression<br /><em><br /><br />No documentation available</em></div>
 <div class="tip" id="fs7">R.c(?paramArray: obj []) : SymbolicExpression<br /><em><br /><br />Combine Values into a Vector or List</em></div>
 <div class="tip" id="fs8">val res : SymbolicExpression<br /><br />Full name: Passing-data.res</div>
 <div class="tip" id="fs9">R.sum(paramsByName: Collections.Generic.IDictionary&lt;string,obj&gt;) : SymbolicExpression<br />R.sum(?paramArray: obj []) : SymbolicExpression<br /><em><br /><br />Sum of Vector Elements</em></div>
@@ -185,8 +193,8 @@
 <div class="tip" id="fs11">namespace RDotNet</div>
 <div class="tip" id="fs12">namespace RDotNet.Internals</div>
 <div class="tip" id="fs13">type SymbolicExpressionType =<br />&#160;&#160;| Null = 0<br />&#160;&#160;| Symbol = 1<br />&#160;&#160;| Pairlist = 2<br />&#160;&#160;| Closure = 3<br />&#160;&#160;| Environment = 4<br />&#160;&#160;| Promise = 5<br />&#160;&#160;| LanguageObject = 6<br />&#160;&#160;| SpecialFunction = 7<br />&#160;&#160;| BuiltinFunction = 8<br />&#160;&#160;| InternalCharacterString = 9<br />&#160;&#160;...<br /><br />Full name: RDotNet.Internals.SymbolicExpressionType</div>
-<div class="tip" id="fs14">field Internals.SymbolicExpressionTypeIntegerVector = 13</div>
-<div class="tip" id="fs15">SymbolicExpression.AsInteger() : IntegerVector</div>
+<div class="tip" id="fs14">field Internals.SymbolicExpressionType.IntegerVector = 13</div>
+<div class="tip" id="fs15">(extension) SymbolicExpression.AsInteger() : IntegerVector</div>
 <div class="tip" id="fs16">val failwithf : format:Printf.StringFormat&lt;&#39;T,&#39;Result&gt; -&gt; &#39;T<br /><br />Full name: Microsoft.FSharp.Core.ExtraTopLevelOperators.failwithf</div>
 <div class="tip" id="fs17">Multiple items<br />active recognizer IntegerVector: SymbolicExpression -&gt; IntegerVector option<br /><br />Full name: RDotNet.ActivePatterns.( |IntegerVector|_| )<br /><br />--------------------<br />type IntegerVector =<br />&#160;&#160;inherit Vector&lt;int&gt;<br />&#160;&#160;new : engine:REngine * length:int -&gt; IntegerVector + 2 overloads<br />&#160;&#160;member CopyTo : destination:int[] * length:int * ?sourceIndex:int * ?destinationIndex:int -&gt; unit<br />&#160;&#160;member Item : int -&gt; int with get, set<br /><br />Full name: RDotNet.IntegerVector<br /><br />--------------------<br />IntegerVector(engine: REngine, length: int) : unit<br />IntegerVector(engine: REngine, vector: Collections.Generic.IEnumerable&lt;int&gt;) : unit<br />IntegerVector(engine: REngine, vector: int []) : unit</div>
 <div class="tip" id="fs18">val iv : IntegerVector</div>
@@ -208,14 +216,19 @@
             <li><a href="http://github.com/BlueMountainCapital/FSharpRProvider/issues">Bug reports & feature requests</a></li>
 
             <li class="nav-header">Documentation</li>
-            <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/Charts-QuickStart.html">Creating charts</a></li>
             <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/Statistics-QuickStart.html">Statistics</a></li>
+            <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/Charts-QuickStart.html">Creating charts</a></li>
+            <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/reading-rdata.html">Reading and writing RData</a></li>
             <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/passing-data.html">Passing data between F# and R</a></li>
             <li class="divider"></li>
             <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/tutorial.html">Analysing stock prices</a></li>
             <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/howto.html">R packages & naming</a></li>
 
+            <li class="nav-header">Reference</li>
+            <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/reference/index.html">API Reference</a></li>
+       
             <li class="nav-header">Internals</li>
+            <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/devnotes.html">Developer notes</a></li>
             <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/whatwhy.html">Whats and whys</a></li>
             <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/internals.html">How does it work</a></li>
             
