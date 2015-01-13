@@ -106,6 +106,29 @@ The module is automatically opened when you open the <code>RProvider</code> name
   </table>
 
     </div>
+    <h2>RProvider.Internal Namespace</h2>
+    <div>
+        <table class="table table-bordered type-list">
+    <thead>
+      <tr><td>Type</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td class="type-name">
+            <a href="rprovider-internal-irinteropserver.html">IRInteropServer</a>
+          </td>
+          <td class="xmldoc"><p>Interface that is used for communication between the R provider server
+(RProvider.Server.exe) which communicates with R and the client that runs
+in the host IDE process (Visual Studio, Xamarin Studio etc.)</p>
+
+<p>NOTE: In order to support standalone compilation of <code>RProvider.Server.exe</code> (which 
+inlines the F# Core library), the interface does not expose any F# Core types.</p>
+</td>
+        </tr>
+    </tbody>
+  </table>
+
+    </div>
 
         </div>
         <div class="span3">
@@ -124,8 +147,9 @@ The module is automatically opened when you open the <code>RProvider</code> name
             <li><a href="http://github.com/BlueMountainCapital/FSharpRProvider/issues">Bug reports & feature requests</a></li>
 
             <li class="nav-header">Documentation</li>
-            <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/Statistics-QuickStart.html">Statistics</a></li>
-            <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/Charts-QuickStart.html">Creating charts</a></li>
+            <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/mac-and-linux.html">R provider on Mac/Linux</a></li>
+            <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/Statistics-QuickStart.html">Statistics walkthrough</a></li>
+            <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/Charts-QuickStart.html">Charting walkthrough</a></li>
             <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/reading-rdata.html">Reading and writing RData</a></li>
             <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/passing-data.html">Passing data between F# and R</a></li>
             <li class="divider"></li>
@@ -137,6 +161,7 @@ The module is automatically opened when you open the <code>RProvider</code> name
        
             <li class="nav-header">Internals</li>
             <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/devnotes.html">Developer notes</a></li>
+            <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/devnotes.html">Diagnostics & debugging</a></li>
             <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/whatwhy.html">Whats and whys</a></li>
             <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/internals.html">How does it work</a></li>
             

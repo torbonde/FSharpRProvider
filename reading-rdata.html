@@ -50,11 +50,11 @@ can easily pass the data between F# and R as <code>*.rdata</code> files.</p>
 can use the <code>save</code> function in R. The following R snippet creates a simple <code>*.rdata</code>
 file containing a couple of symbols from the sample <code>volcano</code> data set:</p>
 
-<pre lang="text">require(datasets)
+<table class="pre"><tr><td><pre lang="text">require(datasets)
 volcanoList &lt;- unlist(as.list(volcano))
 volcanoMean &lt;- mean(volcanoList)
 symbols &lt;- c(&quot;volcano&quot;, &quot;volcanoList&quot;, &quot;volcanoMean&quot;)
-save(list=symols, file=&quot;C:/data/sample.rdata&quot;)</pre>
+save(list=symols, file=&quot;C:/data/sample.rdata&quot;)</pre></td></tr></table>
 
 <p>To import the data on the F# side, you can use the <code>RData</code> type provider that is
 available in the <code>RProvider</code> namespace. It takes a static parameter specifying the
@@ -74,15 +74,15 @@ saved values as static members:</p>
 </pre>
 </td>
 <td class="snippet"><pre class="fssnip">
-<span class="k">open</span> <span onmouseout="hideTip(event, 'fs1', 1)" onmouseover="showTip(event, 'fs1', 1)" class="i">RProvider</span>
+<span class="k">open</span> <span onmouseout="hideTip(event, 'fs2', 2)" onmouseover="showTip(event, 'fs2', 2)" class="i">RProvider</span>
 
-<span class="k">type</span> <span onmouseout="hideTip(event, 'fs2', 2)" onmouseover="showTip(event, 'fs2', 2)" class="i">Sample</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs3', 3)" onmouseover="showTip(event, 'fs3', 3)" class="i">RData</span><span class="o">&lt;</span><span class="s">&quot;</span><span class="s">data</span><span class="s">/</span><span class="s">sample</span><span class="s">.</span><span class="s">rdata</span><span class="s">&quot;</span><span class="o">&gt;</span>
-<span class="k">let</span> <span onmouseout="hideTip(event, 'fs4', 4)" onmouseover="showTip(event, 'fs4', 4)" class="i">sample</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs2', 5)" onmouseover="showTip(event, 'fs2', 5)" class="i">Sample</span>()
+<span class="k">type</span> <span onmouseout="hideTip(event, 'fs3', 3)" onmouseover="showTip(event, 'fs3', 3)" class="i">Sample</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs4', 4)" onmouseover="showTip(event, 'fs4', 4)" class="i">RData</span><span class="o">&lt;</span><span class="s">&quot;</span><span class="s">data</span><span class="s">/</span><span class="s">sample</span><span class="s">.</span><span class="s">rdata</span><span class="s">&quot;</span><span class="o">&gt;</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs5', 5)" onmouseover="showTip(event, 'fs5', 5)" class="i">sample</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs3', 6)" onmouseover="showTip(event, 'fs3', 6)" class="i">Sample</span>()
 
 <span class="c">// Easily access saved values</span>
-<span onmouseout="hideTip(event, 'fs4', 6)" onmouseover="showTip(event, 'fs4', 6)" class="i">sample</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs5', 7)" onmouseover="showTip(event, 'fs5', 7)" class="i">volcano</span>
-<span onmouseout="hideTip(event, 'fs4', 8)" onmouseover="showTip(event, 'fs4', 8)" class="i">sample</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs6', 9)" onmouseover="showTip(event, 'fs6', 9)" class="i">volcanoList</span>
-<span onmouseout="hideTip(event, 'fs4', 10)" onmouseover="showTip(event, 'fs4', 10)" class="i">sample</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs7', 11)" onmouseover="showTip(event, 'fs7', 11)" class="i">volcanoMean</span></pre>
+<span onmouseout="hideTip(event, 'fs5', 7)" onmouseover="showTip(event, 'fs5', 7)" class="i">sample</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs6', 8)" onmouseover="showTip(event, 'fs6', 8)" class="i">volcano</span>
+<span onmouseout="hideTip(event, 'fs5', 9)" onmouseover="showTip(event, 'fs5', 9)" class="i">sample</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs7', 10)" onmouseover="showTip(event, 'fs7', 10)" class="i">volcanoList</span>
+<span onmouseout="hideTip(event, 'fs5', 11)" onmouseover="showTip(event, 'fs5', 11)" class="i">sample</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs8', 12)" onmouseover="showTip(event, 'fs8', 12)" class="i">volcanoMean</span></pre>
 </td>
 </tr>
 </table>
@@ -108,10 +108,10 @@ read them as:</p>
 </pre>
 </td>
 <td class="snippet"><pre class="fssnip">
-<span class="k">let</span> <span onmouseout="hideTip(event, 'fs8', 12)" onmouseover="showTip(event, 'fs8', 12)" class="i">means</span> <span class="o">=</span> 
-  [ <span class="k">for</span> <span onmouseout="hideTip(event, 'fs9', 13)" onmouseover="showTip(event, 'fs9', 13)" class="i">i</span> <span class="k">in</span> <span class="n">1</span> <span class="o">..</span> <span class="n">10</span> <span class="k">-&gt;</span>
-      <span class="k">let</span> <span onmouseout="hideTip(event, 'fs10', 14)" onmouseover="showTip(event, 'fs10', 14)" class="i">data</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs2', 15)" onmouseover="showTip(event, 'fs2', 15)" class="i">Sample</span>(<span onmouseout="hideTip(event, 'fs11', 16)" onmouseover="showTip(event, 'fs11', 16)" class="i">sprintf</span> <span class="s">&quot;</span><span class="s">data</span><span class="s">/</span><span class="s">sample_</span><span class="s">%</span><span class="s">d</span><span class="s">.</span><span class="s">rdata</span><span class="s">&quot;</span> <span onmouseout="hideTip(event, 'fs9', 17)" onmouseover="showTip(event, 'fs9', 17)" class="i">i</span>)
-      <span onmouseout="hideTip(event, 'fs10', 18)" onmouseover="showTip(event, 'fs10', 18)" class="i">data</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs7', 19)" onmouseover="showTip(event, 'fs7', 19)" class="i">volcanoMean</span><span class="o">.</span>[<span class="n">0</span>] ]</pre>
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs9', 13)" onmouseover="showTip(event, 'fs9', 13)" class="i">means</span> <span class="o">=</span> 
+  [ <span class="k">for</span> <span onmouseout="hideTip(event, 'fs10', 14)" onmouseover="showTip(event, 'fs10', 14)" class="i">i</span> <span class="k">in</span> <span class="n">1</span> <span class="o">..</span> <span class="n">10</span> <span class="k">-&gt;</span>
+      <span class="k">let</span> <span onmouseout="hideTip(event, 'fs11', 15)" onmouseover="showTip(event, 'fs11', 15)" class="i">data</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs3', 16)" onmouseover="showTip(event, 'fs3', 16)" class="i">Sample</span>(<span onmouseout="hideTip(event, 'fs12', 17)" onmouseover="showTip(event, 'fs12', 17)" class="i">sprintf</span> <span class="s">&quot;</span><span class="s">data</span><span class="s">/</span><span class="s">sample_</span><span class="s">%</span><span class="s">d</span><span class="s">.</span><span class="s">rdata</span><span class="s">&quot;</span> <span onmouseout="hideTip(event, 'fs10', 18)" onmouseover="showTip(event, 'fs10', 18)" class="i">i</span>)
+      <span onmouseout="hideTip(event, 'fs11', 19)" onmouseover="showTip(event, 'fs11', 19)" class="i">data</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs8', 20)" onmouseover="showTip(event, 'fs8', 20)" class="i">volcanoMean</span><span class="o">.</span>[<span class="n">0</span>] ]</pre>
 </td>
 </tr>
 </table>
@@ -143,17 +143,17 @@ and then use <code>R.save</code> to save the environment to a file:</p>
 </pre>
 </td>
 <td class="snippet"><pre class="fssnip">
-<span class="k">open</span> <span onmouseout="hideTip(event, 'fs1', 20)" onmouseover="showTip(event, 'fs1', 20)" class="i">RProvider</span><span class="o">.</span><span class="i">``base``</span>
+<span class="k">open</span> <span onmouseout="hideTip(event, 'fs2', 21)" onmouseover="showTip(event, 'fs2', 21)" class="i">RProvider</span><span class="o">.</span><span class="i">``base``</span>
 
 <span class="c">// Calculate sum of square differences</span>
-<span class="k">let</span> <span onmouseout="hideTip(event, 'fs12', 21)" onmouseover="showTip(event, 'fs12', 21)" class="i">avg</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs4', 22)" onmouseover="showTip(event, 'fs4', 22)" class="i">sample</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs6', 23)" onmouseover="showTip(event, 'fs6', 23)" class="i">volcanoList</span> <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs13', 24)" onmouseover="showTip(event, 'fs13', 24)" class="i">Array</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs14', 25)" onmouseover="showTip(event, 'fs14', 25)" class="i">average</span>
-<span class="k">let</span> <span onmouseout="hideTip(event, 'fs15', 26)" onmouseover="showTip(event, 'fs15', 26)" class="i">sqrs</span> <span class="o">=</span> 
-  <span onmouseout="hideTip(event, 'fs4', 27)" onmouseover="showTip(event, 'fs4', 27)" class="i">sample</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs6', 28)" onmouseover="showTip(event, 'fs6', 28)" class="i">volcanoList</span> 
-  <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs13', 29)" onmouseover="showTip(event, 'fs13', 29)" class="i">Array</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs16', 30)" onmouseover="showTip(event, 'fs16', 30)" class="i">map</span> (<span class="k">fun</span> <span onmouseout="hideTip(event, 'fs17', 31)" onmouseover="showTip(event, 'fs17', 31)" class="i">v</span> <span class="k">-&gt;</span> <span onmouseout="hideTip(event, 'fs18', 32)" onmouseover="showTip(event, 'fs18', 32)" class="i">pown</span> (<span onmouseout="hideTip(event, 'fs17', 33)" onmouseover="showTip(event, 'fs17', 33)" class="i">v</span> <span class="o">-</span> <span onmouseout="hideTip(event, 'fs12', 34)" onmouseover="showTip(event, 'fs12', 34)" class="i">avg</span>) <span class="n">2</span>)
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs13', 22)" onmouseover="showTip(event, 'fs13', 22)" class="i">avg</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs5', 23)" onmouseover="showTip(event, 'fs5', 23)" class="i">sample</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs7', 24)" onmouseover="showTip(event, 'fs7', 24)" class="i">volcanoList</span> <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs14', 25)" onmouseover="showTip(event, 'fs14', 25)" class="i">Array</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs15', 26)" onmouseover="showTip(event, 'fs15', 26)" class="i">average</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs16', 27)" onmouseover="showTip(event, 'fs16', 27)" class="i">sqrs</span> <span class="o">=</span> 
+  <span onmouseout="hideTip(event, 'fs5', 28)" onmouseover="showTip(event, 'fs5', 28)" class="i">sample</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs7', 29)" onmouseover="showTip(event, 'fs7', 29)" class="i">volcanoList</span> 
+  <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs14', 30)" onmouseover="showTip(event, 'fs14', 30)" class="i">Array</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs17', 31)" onmouseover="showTip(event, 'fs17', 31)" class="i">map</span> (<span class="k">fun</span> <span onmouseout="hideTip(event, 'fs18', 32)" onmouseover="showTip(event, 'fs18', 32)" class="i">v</span> <span class="k">-&gt;</span> <span onmouseout="hideTip(event, 'fs19', 33)" onmouseover="showTip(event, 'fs19', 33)" class="i">pown</span> (<span onmouseout="hideTip(event, 'fs18', 34)" onmouseover="showTip(event, 'fs18', 34)" class="i">v</span> <span class="o">-</span> <span onmouseout="hideTip(event, 'fs13', 35)" onmouseover="showTip(event, 'fs13', 35)" class="i">avg</span>) <span class="n">2</span>)
 
 <span class="c">// Save the squares to an RData file</span>
-<span onmouseout="hideTip(event, 'fs19', 35)" onmouseover="showTip(event, 'fs19', 35)" class="i">R</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs20', 36)" onmouseover="showTip(event, 'fs20', 36)" class="i">assign</span>(<span class="s">&quot;</span><span class="s">volcanoDiffs</span><span class="s">&quot;</span>, <span onmouseout="hideTip(event, 'fs15', 37)" onmouseover="showTip(event, 'fs15', 37)" class="i">sqrs</span>)
-<span onmouseout="hideTip(event, 'fs19', 38)" onmouseover="showTip(event, 'fs19', 38)" class="i">R</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs21', 39)" onmouseover="showTip(event, 'fs21', 39)" class="i">save</span>(<span onmouseout="hideTip(event, 'fs22', 40)" onmouseover="showTip(event, 'fs22', 40)" class="i">list</span><span class="o">=</span>[ <span class="s">&quot;</span><span class="s">volcanoDiffs</span><span class="s">&quot;</span> ], <span class="i">file</span><span class="o">=</span><span class="s">&quot;</span><span class="s">C</span><span class="s">:</span><span class="s">/</span><span class="s">temp</span><span class="s">/</span><span class="s">volcano</span><span class="s">.</span><span class="s">rdata</span><span class="s">&quot;</span>)</pre>
+<span onmouseout="hideTip(event, 'fs20', 36)" onmouseover="showTip(event, 'fs20', 36)" class="i">R</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs21', 37)" onmouseover="showTip(event, 'fs21', 37)" class="i">assign</span>(<span class="s">&quot;</span><span class="s">volcanoDiffs</span><span class="s">&quot;</span>, <span onmouseout="hideTip(event, 'fs16', 38)" onmouseover="showTip(event, 'fs16', 38)" class="i">sqrs</span>)
+<span onmouseout="hideTip(event, 'fs20', 39)" onmouseover="showTip(event, 'fs20', 39)" class="i">R</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs22', 40)" onmouseover="showTip(event, 'fs22', 40)" class="i">save</span>(<span onmouseout="hideTip(event, 'fs23', 41)" onmouseover="showTip(event, 'fs23', 41)" class="i">list</span><span class="o">=</span>[ <span class="s">&quot;</span><span class="s">volcanoDiffs</span><span class="s">&quot;</span> ], <span class="i">file</span><span class="o">=</span><span class="s">&quot;</span><span class="s">C</span><span class="s">:</span><span class="s">/</span><span class="s">temp</span><span class="s">/</span><span class="s">volcano</span><span class="s">.</span><span class="s">rdata</span><span class="s">&quot;</span>)</pre>
 </td>
 </tr>
 </table>
@@ -166,28 +166,29 @@ unnecessary fileds.</p>
 <p>Once you save the file using the above command, you can re-load it again using
 the <code>RData</code> type provider, such as: <code>new RData&lt;"C:/temp/volcano.rdata"&gt;()</code>.</p>
 
-<div class="tip" id="fs1">namespace RProvider</div>
-<div class="tip" id="fs2">type Sample = RData&lt;...&gt;<br /><br />Full name: Reading-rdata.Sample</div>
-<div class="tip" id="fs3">type RData<br /><br />Full name: RProvider.RData</div>
-<div class="tip" id="fs4">val sample : RData&lt;...&gt;<br /><br />Full name: Reading-rdata.sample</div>
-<div class="tip" id="fs5">property RData&lt;...&gt;.volcano: RDotNet.SymbolicExpression</div>
-<div class="tip" id="fs6">property RData&lt;...&gt;.volcanoList: float []</div>
-<div class="tip" id="fs7">property RData&lt;...&gt;.volcanoMean: float []</div>
-<div class="tip" id="fs8">val means : float list<br /><br />Full name: Reading-rdata.means</div>
-<div class="tip" id="fs9">val i : int</div>
-<div class="tip" id="fs10">val data : RData&lt;...&gt;</div>
-<div class="tip" id="fs11">val sprintf : format:Printf.StringFormat&lt;&#39;T&gt; -&gt; &#39;T<br /><br />Full name: Microsoft.FSharp.Core.ExtraTopLevelOperators.sprintf</div>
-<div class="tip" id="fs12">val avg : float<br /><br />Full name: Reading-rdata.avg</div>
-<div class="tip" id="fs13">type Array =<br />&#160;&#160;member Clone : unit -&gt; obj<br />&#160;&#160;member CopyTo : array:Array * index:int -&gt; unit + 1 overload<br />&#160;&#160;member GetEnumerator : unit -&gt; IEnumerator<br />&#160;&#160;member GetLength : dimension:int -&gt; int<br />&#160;&#160;member GetLongLength : dimension:int -&gt; int64<br />&#160;&#160;member GetLowerBound : dimension:int -&gt; int<br />&#160;&#160;member GetUpperBound : dimension:int -&gt; int<br />&#160;&#160;member GetValue : params indices:int[] -&gt; obj + 7 overloads<br />&#160;&#160;member Initialize : unit -&gt; unit<br />&#160;&#160;member IsFixedSize : bool<br />&#160;&#160;...<br /><br />Full name: System.Array</div>
-<div class="tip" id="fs14">val average : array:&#39;T [] -&gt; &#39;T (requires member ( + ) and member DivideByInt and member get_Zero)<br /><br />Full name: Microsoft.FSharp.Collections.Array.average</div>
-<div class="tip" id="fs15">val sqrs : float []<br /><br />Full name: Reading-rdata.sqrs</div>
-<div class="tip" id="fs16">val map : mapping:(&#39;T -&gt; &#39;U) -&gt; array:&#39;T [] -&gt; &#39;U []<br /><br />Full name: Microsoft.FSharp.Collections.Array.map</div>
-<div class="tip" id="fs17">val v : float</div>
-<div class="tip" id="fs18">val pown : x:&#39;T -&gt; n:int -&gt; &#39;T (requires member get_One and member ( * ) and member ( / ))<br /><br />Full name: Microsoft.FSharp.Core.Operators.pown</div>
-<div class="tip" id="fs19">type R =<br />&#160;&#160;static member ! : ?paramArray: obj [] -&gt; SymbolicExpression + 1 overload<br />&#160;&#160;static member != : ?paramArray: obj [] -&gt; SymbolicExpression + 1 overload<br />&#160;&#160;static member !_hexmode : ?a: obj -&gt; SymbolicExpression + 1 overload<br />&#160;&#160;static member !_octmode : ?a: obj -&gt; SymbolicExpression + 1 overload<br />&#160;&#160;static member $ : ?paramArray: obj [] -&gt; SymbolicExpression + 1 overload<br />&#160;&#160;static member $&lt;- : ?paramArray: obj [] -&gt; SymbolicExpression + 1 overload<br />&#160;&#160;static member $&lt;-_data_frame : ?x: obj * ?name: obj * ?value: obj -&gt; SymbolicExpression + 1 overload<br />&#160;&#160;static member $_DLLInfo : ?x: obj * ?name: obj -&gt; SymbolicExpression + 1 overload<br />&#160;&#160;static member $_package__version : ?x: obj * ?name: obj -&gt; SymbolicExpression + 1 overload<br />&#160;&#160;static member %% : ?paramArray: obj [] -&gt; SymbolicExpression + 1 overload<br />&#160;&#160;...<br /><br />Full name: RProvider.base.R<br /><em><br /><br />Base R functions</em></div>
-<div class="tip" id="fs20">R.assign(paramsByName: Collections.Generic.IDictionary&lt;string,obj&gt;) : RDotNet.SymbolicExpression<br />R.assign(?x: obj, ?value: obj, ?pos: obj, ?envir: obj, ?inherits: obj, ?immediate: obj) : RDotNet.SymbolicExpression<br /><em><br /><br />Assign a Value to a Name</em></div>
-<div class="tip" id="fs21">R.save(paramsByName: Collections.Generic.IDictionary&lt;string,obj&gt;) : RDotNet.SymbolicExpression<br />R.save(?___: obj, ?list: obj, ?file: obj, ?ascii: obj, ?version: obj, ?envir: obj, ?compress: obj, ?compression__level: obj, ?eval_promises: obj, ?precheck: obj, ?paramArray: obj []) : RDotNet.SymbolicExpression<br /><em><br /><br />Save R Objects</em></div>
-<div class="tip" id="fs22">type &#39;T list = List&lt;&#39;T&gt;<br /><br />Full name: Microsoft.FSharp.Collections.list&lt;_&gt;</div>
+<div class="tip" id="fs1">namespace System</div>
+<div class="tip" id="fs2">namespace RProvider</div>
+<div class="tip" id="fs3">type Sample = RData&lt;...&gt;<br /><br />Full name: Reading-rdata.Sample</div>
+<div class="tip" id="fs4">type RData<br /><br />Full name: RProvider.RData</div>
+<div class="tip" id="fs5">val sample : RData&lt;...&gt;<br /><br />Full name: Reading-rdata.sample</div>
+<div class="tip" id="fs6">property RData&lt;...&gt;.volcano: RDotNet.SymbolicExpression</div>
+<div class="tip" id="fs7">property RData&lt;...&gt;.volcanoList: float []</div>
+<div class="tip" id="fs8">property RData&lt;...&gt;.volcanoMean: float []</div>
+<div class="tip" id="fs9">val means : float list<br /><br />Full name: Reading-rdata.means</div>
+<div class="tip" id="fs10">val i : int</div>
+<div class="tip" id="fs11">val data : RData&lt;...&gt;</div>
+<div class="tip" id="fs12">val sprintf : format:Printf.StringFormat&lt;&#39;T&gt; -&gt; &#39;T<br /><br />Full name: Microsoft.FSharp.Core.ExtraTopLevelOperators.sprintf</div>
+<div class="tip" id="fs13">val avg : float<br /><br />Full name: Reading-rdata.avg</div>
+<div class="tip" id="fs14">type Array =<br />&#160;&#160;member Clone : unit -&gt; obj<br />&#160;&#160;member CopyTo : array:Array * index:int -&gt; unit + 1 overload<br />&#160;&#160;member GetEnumerator : unit -&gt; IEnumerator<br />&#160;&#160;member GetLength : dimension:int -&gt; int<br />&#160;&#160;member GetLongLength : dimension:int -&gt; int64<br />&#160;&#160;member GetLowerBound : dimension:int -&gt; int<br />&#160;&#160;member GetUpperBound : dimension:int -&gt; int<br />&#160;&#160;member GetValue : params indices:int[] -&gt; obj + 7 overloads<br />&#160;&#160;member Initialize : unit -&gt; unit<br />&#160;&#160;member IsFixedSize : bool<br />&#160;&#160;...<br /><br />Full name: System.Array</div>
+<div class="tip" id="fs15">val average : array:&#39;T [] -&gt; &#39;T (requires member ( + ) and member DivideByInt and member get_Zero)<br /><br />Full name: Microsoft.FSharp.Collections.Array.average</div>
+<div class="tip" id="fs16">val sqrs : float []<br /><br />Full name: Reading-rdata.sqrs</div>
+<div class="tip" id="fs17">val map : mapping:(&#39;T -&gt; &#39;U) -&gt; array:&#39;T [] -&gt; &#39;U []<br /><br />Full name: Microsoft.FSharp.Collections.Array.map</div>
+<div class="tip" id="fs18">val v : float</div>
+<div class="tip" id="fs19">val pown : x:&#39;T -&gt; n:int -&gt; &#39;T (requires member get_One and member ( * ) and member ( / ))<br /><br />Full name: Microsoft.FSharp.Core.Operators.pown</div>
+<div class="tip" id="fs20">type R =<br />&#160;&#160;static member ! : ?paramArray: obj [] -&gt; SymbolicExpression + 1 overload<br />&#160;&#160;static member != : ?paramArray: obj [] -&gt; SymbolicExpression + 1 overload<br />&#160;&#160;static member !_hexmode : ?a: obj -&gt; SymbolicExpression + 1 overload<br />&#160;&#160;static member !_octmode : ?a: obj -&gt; SymbolicExpression + 1 overload<br />&#160;&#160;static member $ : ?paramArray: obj [] -&gt; SymbolicExpression + 1 overload<br />&#160;&#160;static member $&lt;- : ?paramArray: obj [] -&gt; SymbolicExpression + 1 overload<br />&#160;&#160;static member $&lt;-_data_frame : ?x: obj * ?name: obj * ?value: obj -&gt; SymbolicExpression + 1 overload<br />&#160;&#160;static member $_DLLInfo : ?x: obj * ?name: obj -&gt; SymbolicExpression + 1 overload<br />&#160;&#160;static member $_data_frame : ?x: obj * ?name: obj -&gt; SymbolicExpression + 1 overload<br />&#160;&#160;static member $_package__version : ?x: obj * ?name: obj -&gt; SymbolicExpression + 1 overload<br />&#160;&#160;...<br /><br />Full name: RProvider.base.R<br /><em><br /><br />Base R functions</em></div>
+<div class="tip" id="fs21">R.assign(paramsByName: Collections.Generic.IDictionary&lt;string,obj&gt;) : RDotNet.SymbolicExpression<br />R.assign(?x: obj, ?value: obj, ?pos: obj, ?envir: obj, ?inherits: obj, ?immediate: obj) : RDotNet.SymbolicExpression<br /><em><br /><br />Assign a Value to a Name</em></div>
+<div class="tip" id="fs22">R.save(paramsByName: Collections.Generic.IDictionary&lt;string,obj&gt;) : RDotNet.SymbolicExpression<br />R.save(?___: obj, ?list: obj, ?file: obj, ?ascii: obj, ?version: obj, ?envir: obj, ?compress: obj, ?compression__level: obj, ?eval_promises: obj, ?precheck: obj, ?paramArray: obj []) : RDotNet.SymbolicExpression<br /><em><br /><br />Save R Objects</em></div>
+<div class="tip" id="fs23">type &#39;T list = List&lt;&#39;T&gt;<br /><br />Full name: Microsoft.FSharp.Collections.list&lt;_&gt;</div>
 
         </div>
         <div class="span3">
@@ -206,8 +207,9 @@ the <code>RData</code> type provider, such as: <code>new RData&lt;"C:/temp/volca
             <li><a href="http://github.com/BlueMountainCapital/FSharpRProvider/issues">Bug reports & feature requests</a></li>
 
             <li class="nav-header">Documentation</li>
-            <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/Statistics-QuickStart.html">Statistics</a></li>
-            <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/Charts-QuickStart.html">Creating charts</a></li>
+            <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/mac-and-linux.html">R provider on Mac/Linux</a></li>
+            <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/Statistics-QuickStart.html">Statistics walkthrough</a></li>
+            <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/Charts-QuickStart.html">Charting walkthrough</a></li>
             <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/reading-rdata.html">Reading and writing RData</a></li>
             <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/passing-data.html">Passing data between F# and R</a></li>
             <li class="divider"></li>
@@ -219,6 +221,7 @@ the <code>RData</code> type provider, such as: <code>new RData&lt;"C:/temp/volca
        
             <li class="nav-header">Internals</li>
             <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/devnotes.html">Developer notes</a></li>
+            <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/devnotes.html">Diagnostics & debugging</a></li>
             <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/whatwhy.html">Whats and whys</a></li>
             <li><a href="http://bluemountaincapital.github.io/FSharpRProvider/internals.html">How does it work</a></li>
             

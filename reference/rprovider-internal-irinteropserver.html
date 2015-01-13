@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>IConvertFromR<'TOutType> - R Type Provider</title>
+    <title>IRInteropServer - R Type Provider</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="BlueMountain Capital">
@@ -39,12 +39,14 @@
 
 
 
-<h1>IConvertFromR<'TOutType></h1>
+<h1>IRInteropServer</h1>
 <div class="xmldoc">
-<p>This interface can be used for providing new convertors that can convert
-R values to .NET types. The converter is used whenever the users calls the
-<code>se.GetValue&lt;'TOutType&gt;()</code> on a <code>SymbolicExpression</code> value returned from R
-provider.</p>
+<p>Interface that is used for communication between the R provider server
+(RProvider.Server.exe) which communicates with R and the client that runs
+in the host IDE process (Visual Studio, Xamarin Studio etc.)</p>
+
+<p>NOTE: In order to support standalone compilation of <code>RProvider.Server.exe</code> (which 
+inlines the F# Core library), the interface does not expose any F# Core types.</p>
 </div>
   <h3>Instance members</h3>
   <table class="table table-bordered member-list">
@@ -55,35 +57,146 @@ provider.</p>
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '2', 2)" onmouseover="showTip(event, '2', 2)">
-            Convert(arg1)
+          <code onmouseout="hideTip(event, '9', 9)" onmouseover="showTip(event, '9', 9)">
+            GetBindings(arg1)
           </code>
-          <div class="tip" id="2">
-            <strong>Signature:</strong> SymbolicExpression -&gt; Option&lt;&#39;TOutType&gt;<br />
+          <div class="tip" id="9">
+            <strong>Signature:</strong> string -&gt; (string * string) []<br />
               <strong>Modifiers:</strong> abstract<br />
                       </div>
         </td>
         <td class="xmldoc">
-            <a href="https://github.com/BlueMountainCapital/FSharpRProvider/tree/master/src/RProvider/RInterop.fs#L61-61" class="github-link">
+            <a href="https://github.com/BlueMountainCapital/FSharpRProvider/tree/master/src/RProvider/RInteropInterface.fs#L22-22" class="github-link">
               <img src="../content/img/github.png" class="normal" />
               <img src="../content/img/github-blue.png" class="hover" />
             </a>
-          <p>The method is called when the user calls <code>GetValue&lt;'TOutType&gt;()</code> on a
-<code>SymbolicExpression</code> value returned from the R provider.</p>
+          <p>Returns an array with binding information. The first string is the name of the
+function. The second string is serialized <code>RValue</code> with information about the
+kind of the binding and function parameters (use <code>deserializeRValue</code>).</p>
 
-<h2>Example</h2>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
 
-<p>To use this interface, you need to write a plugin (<code>YourPlugin.Plugin.dll</code>) 
-that exports an implementation of this interface using MEF. The method 
-<code>Convert</code> of the interface can return <code>None</code> when the conversion is not
-possible.</p>
+          <code onmouseout="hideTip(event, '10', 10)" onmouseover="showTip(event, '10', 10)">
+            GetFunctionDescriptions(arg1)
+          </code>
+          <div class="tip" id="10">
+            <strong>Signature:</strong> string -&gt; (string * string) []<br />
+              <strong>Modifiers:</strong> abstract<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/BlueMountainCapital/FSharpRProvider/tree/master/src/RProvider/RInteropInterface.fs#L25-25" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Returns an array with pairs consisting of function name and its description</p>
 
-<pre><code>[&lt;Export(typeof&lt;IConvertFromR&lt;MyType&gt;&gt;)&gt;]
-type ConvertMyThingFromR() =
-  interface IConvertFromR&lt;MyThing&gt; with 
-  member x.Convert(symExpr) = 
-    Some(new MyThing()) // TODO: Convert 'symExpr' from R.
-</code></pre>
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '11', 11)" onmouseover="showTip(event, '11', 11)">
+            GetPackageDescription(arg1)
+          </code>
+          <div class="tip" id="11">
+            <strong>Signature:</strong> string -&gt; string<br />
+              <strong>Modifiers:</strong> abstract<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/BlueMountainCapital/FSharpRProvider/tree/master/src/RProvider/RInteropInterface.fs#L27-27" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Returns the description (documentation) for a given package</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '12', 12)" onmouseover="showTip(event, '12', 12)">
+            GetPackages()
+          </code>
+          <div class="tip" id="12">
+            <strong>Signature:</strong> unit -&gt; string []<br />
+              <strong>Modifiers:</strong> abstract<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/BlueMountainCapital/FSharpRProvider/tree/master/src/RProvider/RInteropInterface.fs#L16-16" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Returns an array with the names of all installed packages (e.g. "base", "graphics" etc.)</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '13', 13)" onmouseover="showTip(event, '13', 13)">
+            GetRDataSymbols(arg1)
+          </code>
+          <div class="tip" id="13">
+            <strong>Signature:</strong> string -&gt; (string * Type) []<br />
+              <strong>Modifiers:</strong> abstract<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/BlueMountainCapital/FSharpRProvider/tree/master/src/RProvider/RInteropInterface.fs#L33-33" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Given an <code>.rdata</code> file, returns the names of the symbols in the file, together
+with an F# type that it can be converted to (this is done by getting the type
+of <code>symExpr.Value</code> using currently installed convertors). If the type is not 
+available, this returns <code>null</code>.</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '14', 14)" onmouseover="showTip(event, '14', 14)">
+            InitializationErrorMessage
+          </code>
+          <div class="tip" id="14">
+            <strong>Signature:</strong> string<br />
+              <strong>Modifiers:</strong> abstract<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/BlueMountainCapital/FSharpRProvider/tree/master/src/RProvider/RInteropInterface.fs#L13-13" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>If there was an initialization error when loading R provider, this
+string returns the error. Otherwise, the value is <code>null</code>.</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '15', 15)" onmouseover="showTip(event, '15', 15)">
+            LoadPackage(arg1)
+          </code>
+          <div class="tip" id="15">
+            <strong>Signature:</strong> string -&gt; unit<br />
+              <strong>Modifiers:</strong> abstract<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="https://github.com/BlueMountainCapital/FSharpRProvider/tree/master/src/RProvider/RInteropInterface.fs#L18-18" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Loads the package (using R's <code>require</code>). This should be called before <code>GetBindings</code>.</p>
 
         </td>
       </tr>

@@ -2,9 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>IConvertFromR<'TOutType> - R Type Provider</title>
+    <title>Diagnostics and debugging
+</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
+    <meta name="description" content="An F# Type Provider providing strongly typed access to the R statistical package">
     <meta name="author" content="BlueMountain Capital">
 
     <script src="https://code.jquery.com/jquery-1.8.0.js"></script>
@@ -36,59 +37,54 @@
       <div class="row">
         <div class="span9" id="main">
           
+<h1>Diagnostics and debugging</h1>
 
+<p>The R type provider has an extensive logging to help developers diagnose
+potential issues. If you encounter any issues with the R type provider, this
+page gives you all the information you need to create a log file with detailed
+trace of what is going one. This may give you some hints on what is wrong &amp; a
+detailed report that you can send when <a href="https://github.com/BlueMountainCapital/FSharpRProvider/issues">submitting an
+issue</a>.</p>
 
+<p><strong>TL;DR</strong> The logging is enabled by setting an environment variable
+<code>RPROVIDER_LOG</code> to a file name where the log should be saved. The file does
+not have to exist, but the folder where it is located has to.</p>
 
-<h1>IConvertFromR<'TOutType></h1>
-<div class="xmldoc">
-<p>This interface can be used for providing new convertors that can convert
-R values to .NET types. The converter is used whenever the users calls the
-<code>se.GetValue&lt;'TOutType&gt;()</code> on a <code>SymbolicExpression</code> value returned from R
-provider.</p>
-</div>
-  <h3>Instance members</h3>
-  <table class="table table-bordered member-list">
-    <thead>
-      <tr><td>Instance member</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="member-name">
+<h2>Enabling logging on Windows</h2>
 
-          <code onmouseout="hideTip(event, '2', 2)" onmouseover="showTip(event, '2', 2)">
-            Convert(arg1)
-          </code>
-          <div class="tip" id="2">
-            <strong>Signature:</strong> SymbolicExpression -&gt; Option&lt;&#39;TOutType&gt;<br />
-              <strong>Modifiers:</strong> abstract<br />
-                      </div>
-        </td>
-        <td class="xmldoc">
-            <a href="https://github.com/BlueMountainCapital/FSharpRProvider/tree/master/src/RProvider/RInterop.fs#L61-61" class="github-link">
-              <img src="../content/img/github.png" class="normal" />
-              <img src="../content/img/github-blue.png" class="hover" />
-            </a>
-          <p>The method is called when the user calls <code>GetValue&lt;'TOutType&gt;()</code> on a
-<code>SymbolicExpression</code> value returned from the R provider.</p>
+<p>On Windows, you can set environment variables by going to system properties
+(this varies depending on the OS version, but generally right click on
+"My Computer" and select a link or button saying something like "Change settings").</p>
 
-<h2>Example</h2>
+<p>This should open a new dialog, where you can go to "Advanced", and click on the
+"Environment Variables" button. Here, you can add the variable as either per-user
+or per-system and save it. For example, create a folder <code>C:\Temp</code> and set
+<code>RPROVIDER_LOG</code> to <code>C:\Temp\rlog.txt</code>. After you restart Visual Studio, the
+R provider will start logging.</p>
 
-<p>To use this interface, you need to write a plugin (<code>YourPlugin.Plugin.dll</code>) 
-that exports an implementation of this interface using MEF. The method 
-<code>Convert</code> of the interface can return <code>None</code> when the conversion is not
-possible.</p>
+<h2>Enabling logging on Mac/Linux</h2>
 
-<pre><code>[&lt;Export(typeof&lt;IConvertFromR&lt;MyType&gt;&gt;)&gt;]
-type ConvertMyThingFromR() =
-  interface IConvertFromR&lt;MyThing&gt; with 
-  member x.Convert(symExpr) = 
-    Some(new MyThing()) // TODO: Convert 'symExpr' from R.
-</code></pre>
+<p>If you're using Xamarin Studio on Mac, then the easiest option is to set the
+variable from Terminal and then start Xamarin Studio from terminal. Note that
+if you set the environment variable from terminal, but launch Xamarin Studio
+from Dock or in some other way, it will not see the variable!</p>
 
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<p>The following should do the trick (assuming the folder <code>/Users/tomasp/Temp</code> exists):</p>
+
+<table class="pre"><tr><td><pre lang="text">export RPROVIDER_LOG=/Users/tomasp/Temp/rlog.txt
+open -n /Applications/Xamarin\ Studio.app/</pre></td></tr></table>
+
+<p>This will set the variable and start a new instance of Xamarin Studio in the current
+context. Once it appears, reporduce the operation that causes the error, close
+Xamarin Studio and look at the log file.</p>
+
+<h2>Enabling logging in a custom build</h2>
+
+<p>If you're building R provider from source, you can also enable logging by changing
+the <code>loggingEnabled</code> constant in the source code (and change <code>logFile</code> if you want
+to override the default location). See the <a href="https://github.com/BlueMountainCapital/FSharpRProvider/blob/master/src/RProvider/Logging.fs#L13">right place for this on
+GitHub</a>.</p>
+
 
         </div>
         <div class="span3">
