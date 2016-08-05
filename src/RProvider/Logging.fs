@@ -10,13 +10,12 @@ open RProvider
 /// The logging is enabled by setting the RPROVIDER_LOG environment variable
 /// Alternatively, just change this constant to 'true' and logs will be 
 /// saved in the default location (see below)
-let private loggingEnabled = 
-    System.Environment.GetEnvironmentVariable("RPROVIDER_LOG") <> null
+let private loggingEnabled = true// System.Environment.GetEnvironmentVariable("RPROVIDER_LOG") <> null
 
 /// Log file - if the RPROVIDER_LOG variable is not set, the default on  
 /// Windows is "C:\Users\<user>\AppData\Roaming\RLogs\log.txt" and on Mac 
 /// this is in "/User/<user>/.config/RLogs/log.txt")
-let private logFile = 
+let private logFile =
   try
     let var = System.Environment.GetEnvironmentVariable("RPROVIDER_LOG")
     if var <> null then var else

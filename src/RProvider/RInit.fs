@@ -70,14 +70,36 @@ let private getRLocation () =
 
     // On Mac and Unix we first check `.rprovider.conf` in PATH for 
     // R_HOME variable; then try to run "R --print-home" hoping that R is in PATH
-    match Environment.GetEnvironmentVariable "R_HOME" with
-    | null -> 
+    let processPath, userPath, machinePath =
+        Environment.GetEnvironmentVariable("R_HOME")
+        , Environment.GetEnvironmentVariable("R_HOME", EnvironmentVariableTarget.User)
+        , Environment.GetEnvironmentVariable("R_HOME", EnvironmentVariableTarget.Machine)
+
+    if String.IsNullOrEmpty processPath
+    then Logging.logf "Process path null or empty"
+    else Logging.logf "Process path: %s" processPath
+    
+    if String.IsNullOrEmpty userPath
+    then Logging.logf "User path null or empty"
+    else Logging.logf "User path: %s" userPath
+
+    if String.IsNullOrEmpty machinePath
+    then Logging.logf "Machine path null or empty"
+    else Logging.logf "Machine path: %s" machinePath
+
+    let (|NullOrEmpty|_|) (s: string) = if String.IsNullOrEmpty s then Some(NullOrEmpty) else None
+
+    match  processPath, userPath, machinePath with
+    | NullOrEmpty, NullOrEmpty, NullOrEmpty -> 
+        Logging.logf "All paths were null"
         if Configuration.isUnixOrMac() then 
             match locateRfromConfFile() with
             | Some rPath -> RInitResult rPath
             | _ -> locateRfromShellR()
         else locateRfromRegistry()
-    | rPath -> RInitResult rPath 
+    | NullOrEmpty, NullOrEmpty, rPath
+    | NullOrEmpty, rPath, _
+    | rPath, _, _  -> RInitResult rPath
 
 /// Find the R installation using 'getRLocation' and add the directory to the
 /// current environment varibale PATH (so that later loading can find 'R.dll')
@@ -87,6 +109,7 @@ let private findRHomePath () =
       match getRLocation() with
       | RInitError error -> RInitError error
       | RInitResult location ->
+          Logging.logf "Found location: %s" location
           let binPath = 
               if Configuration.isUnixOrMac() then 
                   Path.Combine(location, "lib") 
@@ -134,4 +157,5 @@ let internal engine = Lazy<_>(fun () ->
         engine
     with e -> 
         Logging.logf "engine: Creating instance failed:\r\n  %O" e
+        Logging.logf "R.Net SetEnvironmentVariablesLog:\r\n  %s" RDotNet.NativeLibrary.NativeUtility.SetEnvironmentVariablesLog
         raise(Exception("Initialization of R.NET failed", e)) )
